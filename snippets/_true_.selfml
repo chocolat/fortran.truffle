@@ -1,0 +1,8 @@
+(name .TRUE.)
+
+(trigger
+    (tab T))
+
+(only-in source.fortran)
+
+(snippet .TRUE.)

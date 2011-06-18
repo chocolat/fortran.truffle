@@ -1,0 +1,8 @@
+(name Non-Equality)
+
+(trigger
+    (tab neqv))
+
+(only-in source.fortran)
+
+(snippet .neqv.)

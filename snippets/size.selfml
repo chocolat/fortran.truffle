@@ -1,0 +1,8 @@
+(name Size)
+
+(trigger
+    (tab size))
+
+(only-in source.fortran)
+
+(snippet [size(%{1="source"}%{2=", dim=%{3=\"1\"}"})])

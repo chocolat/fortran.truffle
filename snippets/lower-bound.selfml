@@ -1,0 +1,8 @@
+(name [Lower Bound])
+
+(trigger
+    (tab lbound))
+
+(only-in source.fortran)
+
+(snippet [lbound(%{1="source"}%{2=", dim=%{3=\"1\"}"})])

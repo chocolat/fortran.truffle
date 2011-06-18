@@ -1,0 +1,8 @@
+(name [Random Number])
+
+(trigger
+    (tab rn))
+
+(only-in source.fortran)
+
+(snippet [call random_number(%{0})])

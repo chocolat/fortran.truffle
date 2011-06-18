@@ -1,0 +1,8 @@
+(name .FALSE.)
+
+(trigger
+    (tab F))
+
+(only-in source.fortran)
+
+(snippet .FALSE.)

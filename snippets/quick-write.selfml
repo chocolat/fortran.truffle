@@ -1,0 +1,9 @@
+(name [Quick Write])
+
+(trigger
+    (tab wr))
+
+(only-in source.fortran)
+
+(snippet [write(unit=%{1="iounit"}, fmt=*) %{0="variables"}
+])

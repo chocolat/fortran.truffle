@@ -1,0 +1,8 @@
+(name [Quick Logical])
+
+(trigger
+    (tab l))
+
+(only-in source.fortran)
+
+(snippet [logical :: ])

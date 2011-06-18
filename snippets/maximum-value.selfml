@@ -1,0 +1,8 @@
+(name [Maximum Value])
+
+(trigger
+    (tab maxval))
+
+(only-in source.fortran)
+
+(snippet [maxval(%{1="source"}%{2=", dim=%{3=\"1\"}"}%{4=", mask=%{5=\"(%{1}>0)\"}"})])

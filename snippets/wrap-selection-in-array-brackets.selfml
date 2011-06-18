@@ -1,0 +1,8 @@
+(name [Wrap Selection in Array Brackets])
+
+(trigger
+    (key [[shift][cmd]A]))
+
+(only-in source.fortran)
+
+(snippet [(/ %{TM_SELECTED_TEXT}%{0} /)])

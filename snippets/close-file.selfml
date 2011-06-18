@@ -1,0 +1,10 @@
+(name [Close File])
+
+(trigger
+    (tab close))
+
+(only-in source.fortran)
+
+(snippet [close(unit=%{1="iounit"}, iostat=%{2="ios"}%{3=", status=\"delete\""})
+if ( %{2} /= 0 ) stop "Error closing file unit %{1}"
+])

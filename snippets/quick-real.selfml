@@ -1,0 +1,8 @@
+(name [Quick Real])
+
+(trigger
+    (tab r))
+
+(only-in source.fortran)
+
+(snippet [real :: ])

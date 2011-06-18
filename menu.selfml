@@ -1,0 +1,23 @@
+(menu command.quick-open
+    ---
+    (submenu [Programming Units] snippet.program snippet.module snippet.interface snippet.module-procedure snippet.subroutine snippet.function --- command.subroutine-based-on-current-word command.function-based-on-current-word)
+    (submenu [Variable Specification] snippet.quick-integer snippet.quick-real snippet.quick-logical snippet.quick-character snippet.quick-custom-type --- snippet.integer snippet.real snippet.logical snippet.character snippet.custom-type --- snippet.implicit-none snippet.data snippet.type-definition)
+    (submenu [Control Constructs] snippet.if [snippet.if-(single-line)] snippet.elseif --- snippet.do snippet.do-while snippet.named-do snippet.cycle snippet.stop snippet.implied-do --- snippet.select-case snippet.named-select-case snippet.case --- snippet.forall)
+    (submenu [Relational & Logical] snippet.equal snippet.less-than snippet.less-or-equal snippet.greater-than snippet.greater-or-equal --- snippet.not snippet.and snippet.or snippet.equality snippet.non-equality --- snippet.all snippet.any snippet.count --- snippet._true_ snippet._false_)
+    (submenu Input/Output
+        snippet.quick-open
+        snippet.print
+        snippet.quick-write
+        snippet.quick-read
+        ---
+        snippet.open-file
+        (submenu Open... snippet.input-file snippet.output-file snippet.scratch-file)
+        snippet.close-file
+        [snippet.write-(sequental-access)]
+        snippet.read
+        [snippet.read-(sequential-access)]
+        [snippet.inquire-(by-filename)]
+        [snippet.inquire-(by-unit)]
+        ---)
+    (submenu Arrays snippet.wrap-selection-in-array-brackets --- snippet.where [snippet.where-(single-line)] --- snippet.allocate-array snippet.deallocate-array snippet.allocate-and-deallocate-array --- snippet.reshape snippet.pack snippet.unpack snippet.merge snippet.spread --- snippet.lower-bound snippet.upper-bound snippet.size --- snippet.sum-of-elements snippet.product-of-elements snippet.maximum-value snippet.minimum-value snippet.index-of-maximum snippet.index-of-minimum snippet.matrix-multiplication snippet.dot-product-of-vectors)
+    (submenu Math snippet.random-number snippet.random-seed --- snippet.max snippet.min))

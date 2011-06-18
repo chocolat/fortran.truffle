@@ -1,0 +1,8 @@
+(name Equal)
+
+(trigger
+    (tab eq))
+
+(only-in source.fortran)
+
+(snippet .eq.)

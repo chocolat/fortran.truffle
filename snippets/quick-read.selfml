@@ -1,0 +1,8 @@
+(name [Quick Read])
+
+(trigger
+    (tab re))
+
+(only-in source.fortran)
+
+(snippet [read*, ])

@@ -1,0 +1,8 @@
+(name spread)
+
+(trigger
+    (tab spread))
+
+(only-in source.fortran)
+
+(snippet [spread(%{1="source"}, dim=%{2="1"}, ncopies=%{3})])

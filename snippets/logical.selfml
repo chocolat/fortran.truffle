@@ -1,0 +1,8 @@
+(name Logical)
+
+(trigger
+    (tab log))
+
+(only-in source.fortran)
+
+(snippet [logical%{1="(%{2=\"kind\"})"}%{3=", %{4=\"attributes\"}"} :: %{5="name"}])

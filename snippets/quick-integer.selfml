@@ -1,0 +1,8 @@
+(name [Quick Integer])
+
+(trigger
+    (tab i))
+
+(only-in source.fortran)
+
+(snippet [integer :: ])

@@ -1,0 +1,8 @@
+(name all)
+
+(trigger
+    (tab all))
+
+(only-in source.fortran)
+
+(snippet [all(%{1="mask"}%{2=", dim=%{3=\"1\"}"})])

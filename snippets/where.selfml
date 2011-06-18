@@ -1,0 +1,10 @@
+(name where)
+
+(trigger
+    (tab whe))
+
+(only-in source.fortran)
+
+(snippet [where ( %{1} %{2="=="} %{3} )
+	%{0}
+end where])

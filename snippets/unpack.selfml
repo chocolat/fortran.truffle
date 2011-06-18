@@ -1,0 +1,8 @@
+(name unpack)
+
+(trigger
+    (tab unpack))
+
+(only-in source.fortran)
+
+(snippet [unpack(%{1="vector"}, mask=(%{2="%{1}>0"}), field=%{3="destination array"})])

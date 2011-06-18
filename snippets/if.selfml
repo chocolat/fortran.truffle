@@ -1,0 +1,10 @@
+(name if)
+
+(trigger
+    (tab if))
+
+(only-in source.fortran)
+
+(snippet [if ( %{1="condition"} ) then
+	%{0}
+end if])

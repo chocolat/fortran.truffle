@@ -1,0 +1,10 @@
+(name [named: do])
+
+(trigger
+    (tab ndo))
+
+(only-in source.fortran)
+
+(snippet [%{1="name"}: do%{2=" %{3=\"i\"} = %{4=\"1\"}, %{5=\"100\"}, %{6=\"1\"}"}
+	%{0}
+end do %{1}])

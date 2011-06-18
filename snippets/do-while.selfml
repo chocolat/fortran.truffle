@@ -1,0 +1,10 @@
+(name [do while])
+
+(trigger
+    (tab dow))
+
+(only-in source.fortran)
+
+(snippet [do while ( %{1="condition"} )
+	%{0}
+end do])

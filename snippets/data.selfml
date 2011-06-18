@@ -1,0 +1,8 @@
+(name data)
+
+(trigger
+    (tab data))
+
+(only-in source.fortran)
+
+(snippet [data %{1="variable"} / %{2="data"} /])

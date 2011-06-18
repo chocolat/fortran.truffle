@@ -1,0 +1,8 @@
+(name [Quick Print])
+
+(trigger
+    (tab pr))
+
+(only-in source.fortran)
+
+(snippet [print*, ])

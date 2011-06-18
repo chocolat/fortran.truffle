@@ -1,0 +1,9 @@
+(name [Quick Open])
+
+(trigger
+    (tab op))
+
+(only-in source.fortran)
+
+(snippet [open(unit=%{1="iounit"}, file=%{2="name"}, iostat=%{3="ios"})
+if ( %{3} /= 0 ) stop "Error opening file %{2/[\"\'](.*)[\"\']/$1/}"])

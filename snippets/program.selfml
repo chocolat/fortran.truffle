@@ -1,0 +1,14 @@
+(name program)
+
+(trigger
+    (tab prog))
+
+(only-in source.fortran)
+
+(snippet [program %{1="name"}
+
+	implicit none
+	%{0}
+
+end program %{1}
+])

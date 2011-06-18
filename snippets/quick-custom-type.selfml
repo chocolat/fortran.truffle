@@ -1,0 +1,8 @@
+(name [Quick Custom Type])
+
+(trigger
+    (tab t))
+
+(only-in source.fortran)
+
+(snippet [type(%{1="type name"}) :: ])

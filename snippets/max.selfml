@@ -1,0 +1,8 @@
+(name max)
+
+(trigger
+    (tab max))
+
+(only-in source.fortran)
+
+(snippet [max(%{1}, %{2}${, %{3}:...})%{0}])

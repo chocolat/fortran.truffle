@@ -1,0 +1,9 @@
+(name [implicit none])
+
+(trigger
+    (tab imp))
+
+(only-in source.fortran)
+
+(snippet [implicit none
+])

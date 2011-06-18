@@ -1,0 +1,8 @@
+(name [Sum of Elements])
+
+(trigger
+    (tab sum))
+
+(only-in source.fortran)
+
+(snippet [sum(%{1="source"}%{2=", dim=%{3=\"1\"}"}%{4=", mask=%{5=\"(%{1}>0)\"}"})])

@@ -1,0 +1,8 @@
+(name [where (single line)])
+
+(trigger
+    (tab wh))
+
+(only-in source.fortran)
+
+(snippet [where ( %{1} %{2="=="} %{3} ) ])

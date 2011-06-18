@@ -1,0 +1,14 @@
+(name module)
+
+(trigger
+    (tab mod))
+
+(only-in source.fortran)
+
+(snippet [module %{1="name"}
+
+	implicit none
+	%{0}
+
+end module %{1}
+])

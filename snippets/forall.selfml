@@ -1,0 +1,10 @@
+(name forall)
+
+(trigger
+    (tab for))
+
+(only-in source.fortran.modern)
+
+(snippet [forall (%{1="i=1:100"}%{2=", mask"})
+	%{0}
+end forall])

@@ -1,0 +1,8 @@
+(name [Greater Than])
+
+(trigger
+    (tab gt))
+
+(only-in source.fortran)
+
+(snippet .gt.)

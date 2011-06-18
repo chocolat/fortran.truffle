@@ -1,0 +1,11 @@
+(name [named: select case])
+
+(trigger
+    (tab nsel))
+
+(only-in source.fortran)
+
+(snippet [%{1="name"}: select case (%{2}:variable)
+	case (%{3}:values) %{1}
+		%{0}
+end select %{1}])

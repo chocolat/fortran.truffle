@@ -1,0 +1,8 @@
+(name [Upper Bound])
+
+(trigger
+    (tab ubound))
+
+(only-in source.fortran)
+
+(snippet [ubound(%{1="source"}%{2=", dim=%{3=\"1\"}"})])

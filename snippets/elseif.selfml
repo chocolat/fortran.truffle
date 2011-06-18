@@ -1,0 +1,9 @@
+(name elseif)
+
+(trigger
+    (tab elif))
+
+(only-in source.fortran)
+
+(snippet [elseif ( %{1="condition"} ) then
+	])

@@ -1,0 +1,8 @@
+(name [Less Than])
+
+(trigger
+    (tab lt))
+
+(only-in source.fortran)
+
+(snippet .lt.)

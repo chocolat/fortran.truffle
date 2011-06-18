@@ -1,0 +1,8 @@
+(name cycle)
+
+(trigger
+    (tab cy))
+
+(only-in source.fortran)
+
+(snippet cycle)

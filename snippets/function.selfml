@@ -1,0 +1,12 @@
+(name function)
+
+(trigger
+    (tab fun))
+
+(only-in source.fortran)
+
+(snippet [function %{1="name"}
+	%{2="argument type"}, intent(%{3="inout"}) :: %{1/\w+\((.*)\)|.*/$1/}
+	%{4="function type"} :: %{1/(\w+).*/$1/}
+	%{0}
+end function %{1/(\w+).*/$1/}])

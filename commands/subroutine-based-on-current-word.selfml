@@ -1,0 +1,17 @@
+(trigger
+    (key [[shift][enter]]))
+
+(name [Subroutine based on current word])
+
+(only-in source.fortran)
+
+(input selection word)
+
+(output snippet)
+
+(save nothing)
+
+(script [echo "subroutine $TM_CURRENT_WORD(\$1)"
+echo "	\$2, intent(\${3:inout}) :: \$1"
+echo "	\$0"
+echo "end subroutine $TM_CURRENT_WORD"])

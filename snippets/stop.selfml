@@ -1,0 +1,8 @@
+(name stop)
+
+(trigger
+    (tab stop))
+
+(only-in source.fortran)
+
+(snippet [stop "%{1="message"}"])

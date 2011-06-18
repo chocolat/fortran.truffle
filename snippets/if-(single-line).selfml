@@ -1,0 +1,8 @@
+(name [if (single line)])
+
+(trigger
+    (tab if))
+
+(only-in source.fortran)
+
+(snippet [if ( %{1="condition"} ) ])

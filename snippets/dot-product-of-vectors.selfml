@@ -1,0 +1,8 @@
+(name [Dot Product of Vectors])
+
+(trigger
+    (tab dot))
+
+(only-in source.fortran)
+
+(snippet [dot_product(%{1},%{2})])

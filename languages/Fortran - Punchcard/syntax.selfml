@@ -1,0 +1,283 @@
+(root source.fortran
+    (include @preprocessor-rule-enabled)
+    (include @preprocessor-rule-disabled)
+    (include @preprocessor-rule-other)
+    (zone constant.language.fortran
+        (match
+            (regex [(?i:(r8|r4|\.TRUE\.|\.FALSE\.))])))
+    (zone constant.numeric.fortran
+        (match
+            (regex [\b[\+\-]?[0-9]+\.?[0-9a-zA-Z_]*\b])))
+    (zone meta.function.fortran
+        (start
+            (regex [(?x:					# extended mode
+					^
+					\s*					# start of line and possibly some space
+					([a-zA-Z\(\)]*)(?<!end)	# 1: possibly some type specification but not the word end
+					\s*					# possibly some space
+					(?i:(function|subroutine))\b	# 2: function or subroutine
+					\s+					# some space
+					([A-Za-z_][A-Za-z0-9_]*)		# 3: name
+					\s*					# possibly some space
+					(\()					# 4: opening parenthesis
+					([^)]*)?  		# 5: arguments (anything but a parenthesis)
+					(\))?					# 6: closing parenthesis
+					)]
+                (3 entity.name.function.fortran)
+                (4 punctuation.definition.parameters.fortran)
+                (5 variable.parameter.fortran)
+                (1 storage.type.fortran)
+                (6 punctuation.definition.parameters.fortran)
+                (2 storage.type.function.fortran)))
+        (end
+            (regex [(?x:					# extended mode
+					((?i:end))			# 1: the word end
+					(					# followed by
+						$				# end of line
+					|					# or
+						\s*				# possibly some space
+						(?i:(function|subroutine))	# 2: function or subroutine
+						((\s+[A-Za-z_][A-Za-z0-9_]*)?)	# 3: possibly the name
+					)
+					)]
+                (3 storage.type.function.fortran)
+                (4 entity.name.function.end.fortran)
+                (1 keyword.other.fortran)))
+        (subzones
+            (include $self)
+            (include source.fortran.modern)))
+    (zone meta.specification.fortran
+        (start
+            (regex [\b(?i:(integer|real|double\s+precision|complex|logical|character))\b(?=.*::)]
+                (1 storage.type.fortran)))
+        (end
+            (regex [(?=!)|$]))
+        (subzones
+            (include $self)))
+    (zone keyword.control.fortran
+        (match
+            (regex [\b(?i:(go\s*to|assign|to|if|then|else|end\s*if|continue|stop|pause|do|end\s*do|while|cycle))\b])))
+    (zone keyword.control.programming-units.fortran
+        (match
+            (regex [\b(?i:(program|end\s+program|entry|block\s+data|call|return|contains|include))\b])))
+    (zone keyword.control.io.fortran
+        (match
+            (regex [\b(?i:(open|close|read|write|print|inquire|backspace|endfile|format))\b])))
+    (zone keyword.operator.fortran
+        (match
+            (regex [((?<!\=)\=(?!\=)|\-|\+|\/\/|\/|\*|::)])))
+    (zone keyword.operator.logical.fortran
+        (match
+            (regex [(?i:(\.and\.|\.or\.|\.eq\.|\.lt\.|\.le\.|\.gt\.|\.ge\.|\.ne\.|\.not\.|\.eqv\.|\.neqv\.))])))
+    (zone keyword.other.instrisic.argument.fortran
+        (match
+            (regex [\b(?i:(present)(?=\())])))
+    (zone keyword.other.instrisic.numeric.fortran
+        (match
+            (regex [\b(?i:(abs|aimag|aint|anint|cmplx|conjg|dble|dim|dprod|int|max|min|mod|nint|real|sign|digits|epsilon|huge|maxexponent|minexponent|precision|radix|range|tiny)(?=\())])))
+    (zone keyword.other.instrisic.string.fortran
+        (match
+            (regex [\b(?i:(achar|adjustl|adjustr|char|iachar|ichar|index|len_trim|repeat|scan|string|trim|verify|len)(?=\())])))
+    (zone keyword.other.instrisic.math.fortran
+        (match
+            (regex [\b(?i:(((acos|asin|atan|atan2|cos|cosh|exp|log|log10|sin|sinh|sqrt|tan|tanh)(?=\())|(random_number|random_seed)))\b])))
+    (zone keyword.other.instrisic.data.fortran
+        (match
+            (regex [\b(?i:(kind|selected_int_kind|selected_real_kind|transfer)(?=\())])))
+    (zone keyword.other.instrisic.logical.fortran
+        (match
+            (regex [\b(?i:(logical)(?=\())])))
+    (zone keyword.other.instrisic.bit.fortran
+        (match
+            (regex [\b(?i:(((bit_size|btest|iand|ibclr|ibits|ibset|ieor|ior|ishift|ishiftc|not)(?=\())|mvbits))\b])))
+    (zone keyword.other.instrisic.floating-point.fortran
+        (match
+            (regex [\b(?i:(exponent|fraction|nearest|rrspacing|scale|set_exponent|spacing)(?=\())])))
+    (zone keyword.other.instrisic.array.fortran
+        (match
+            (regex [\b(?i:(((dot_product|sum|matmul|transpose|all|any|count|maxval|minval|maxloc|minloc|product|sum|lbound|ubound|shape|size|merge|pack|unpack|reshape|spread|cshift|eoshift)(?=\())|(where|elsewhere|end\s*where)))\b])))
+    (zone keyword.other.instrisic.fortran
+        (match
+            (regex [\b(?i:(((dtime)(?=\())|(date_and_time|system_clock)))\b])))
+    (zone storage.type.fortran
+        (match
+            (regex [\b(?i:(integer|real|double\s+precision|complex|logical|character|block\sdata|operator|assignment))\b])))
+    (zone storage.modifier.fortran
+        (match
+            (regex [\b(?i:(dimension|common|equivalence|parameter|external|intrinsic|save|data|implicit\s*none|implicit|intent|in|out|inout))\b])))
+    (zone string.quoted.single.fortran
+        (start
+            (regex '
+                (0 punctuation.definition.string.begin.fortran)))
+        (end
+            (regex '
+                (0 punctuation.definition.string.end.fortran)))
+        (subzones
+            (zone constant.character.escape.apostrophe.fortran
+                (match ''))))
+    (zone string.quoted.double.fortran
+        (start
+            (regex "
+                (0 punctuation.definition.string.begin.fortran)))
+        (end
+            (regex "
+                (0 punctuation.definition.string.end.fortran)))
+        (subzones
+            (zone constant.character.escape.quote.fortran
+                (match ""))))
+    (zone comment.line.c.fortran
+        (start
+            (regex [^[Cc]]
+                (0 punctuation.definition.comment.fortran)))
+        (end
+            (regex $\n?))
+        (subzones
+            (zone
+                (match
+                    (regex \\\s*\n)))))
+    (zone meta.preprocessor.diagnostic.fortran
+        (start
+            (regex [^\s*#\s*(error|warning)\b]
+                (1 keyword.control.import.error.fortran)))
+        (end
+            (regex $\n?
+                (1 keyword.control.import.error.fortran)))
+        (subzones
+            (zone punctuation.separator.continuation.fortran
+                (match
+                    (regex [(?>\\\s*\n)])))))
+    (zone meta.preprocessor.fortran.include
+        (start
+            (regex [^\s*#\s*(include|import)\b\s+]
+                (1 keyword.control.import.include.fortran)))
+        (end
+            (regex [(?=(?://|/\*))|$\n?]
+                (1 keyword.control.import.include.fortran)))
+        (subzones
+            (zone punctuation.separator.continuation.fortran
+                (match
+                    (regex [(?>\\\s*\n)])))
+            (zone string.quoted.double.include.fortran
+                (start
+                    (regex "
+                        (0 punctuation.definition.string.begin.fortran)))
+                (end
+                    (regex "
+                        (0 punctuation.definition.string.end.fortran))))
+            (zone string.quoted.other.lt-gt.include.fortran
+                (start
+                    (regex <
+                        (0 punctuation.definition.string.begin.fortran)))
+                (end
+                    (regex >
+                        (0 punctuation.definition.string.end.fortran))))))
+    (include @pragma-mark)
+    (zone meta.preprocessor.fortran
+        (start
+            (regex [^\s*#\s*(define|defined|elif|else|if|ifdef|ifndef|line|pragma|undef)\b]
+                (1 keyword.control.import.fortran)))
+        (end
+            (regex [(?=(?://|/\*))|$\n?]
+                (1 keyword.control.import.fortran)))
+        (subzones
+            (zone punctuation.separator.continuation.fortran
+                (match
+                    (regex [(?>\\\s*\n)]))))))
+
+(collection preprocessor-rule-other
+    (zone
+        (start
+            (regex [^\s*(#\s*(if(n?def)?)\b.*?(?:(?=(?://|/\*))|$))]
+                (1 meta.preprocessor.fortran)
+                (2 keyword.control.import.fortran)))
+        (end
+            (regex [^\s*(#\s*(endif)\b).*$]
+                (1 meta.preprocessor.fortran)
+                (2 keyword.control.import.fortran)))
+        (subzones
+            (include $base))))
+
+(collection preprocessor-rule-enabled
+    (zone
+        (start
+            (regex [^\s*(#(if)\s+(0*1)\b)]
+                (3 constant.numeric.preprocessor.fortran)
+                (1 meta.preprocessor.fortran)
+                (2 keyword.control.import.if.fortran)))
+        (end
+            (regex [^\s*(#\s*(endif)\b)]
+                (3 constant.numeric.preprocessor.fortran)
+                (1 meta.preprocessor.fortran)
+                (2 keyword.control.import.if.fortran)))
+        (subzones
+            (zone
+                (inner-identifier comment.block.preprocessor.else-branch)
+                (start
+                    (regex [^\s*(#\s*(else)\b).*]
+                        (1 meta.preprocessor.fortran)
+                        (2 keyword.control.import.else.fortran)))
+                (end
+                    (regex [(?=^\s*#\s*endif\b.*$)]
+                        (1 meta.preprocessor.fortran)
+                        (2 keyword.control.import.else.fortran)))
+                (subzones
+                    (include @disabled)
+                    (include @pragma-mark)))
+            (zone
+                (start
+                    (regex []))
+                (end
+                    (regex [(?=^\s*#\s*(else|endif)\b.*$)]))
+                (subzones
+                    (include $base))))))
+
+(collection pragma-mark
+    (zone meta.section
+        (match
+            (regex [^\s*(#\s*(pragma\s+mark)\s+(.*))]
+                (3 meta.toc-list.pragma-mark.fortran)
+                (1 meta.preprocessor.fortran)
+                (2 keyword.control.import.pragma.fortran)))))
+
+(collection preprocessor-rule-disabled
+    (zone
+        (start
+            (regex [^\s*(#(if)\s+(0)\b).*]
+                (3 constant.numeric.preprocessor.fortran)
+                (1 meta.preprocessor.fortran)
+                (2 keyword.control.import.if.fortran)))
+        (end
+            (regex [^\s*(#\s*(endif)\b)]
+                (3 constant.numeric.preprocessor.fortran)
+                (1 meta.preprocessor.fortran)
+                (2 keyword.control.import.if.fortran)))
+        (subzones
+            (zone
+                (start
+                    (regex [^\s*(#\s*(else)\b)]
+                        (1 meta.preprocessor.fortran)
+                        (2 keyword.control.import.else.fortran)))
+                (end
+                    (regex [(?=^\s*#\s*endif\b.*$)]
+                        (1 meta.preprocessor.fortran)
+                        (2 keyword.control.import.else.fortran)))
+                (subzones
+                    (include $base)))
+            (zone comment.block.preprocessor.if-branch
+                (start
+                    (regex []))
+                (end
+                    (regex [(?=^\s*#\s*(else|endif)\b.*$)]))
+                (subzones
+                    (include @disabled)
+                    (include @pragma-mark))))))
+
+(collection disabled
+    (zone
+        (start
+            (regex [^\s*#\s*if(n?def)?\b.*$]))
+        (end
+            (regex [^\s*#\s*endif\b.*$]))
+        (subzones
+            (include @disabled)
+            (include @pragma-mark))))

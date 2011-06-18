@@ -1,0 +1,8 @@
+(name merge)
+
+(trigger
+    (tab merge))
+
+(only-in source.fortran)
+
+(snippet [merge(%{1="source"}, %{2="alternative"}, mask=(%{2="%{1}>0"}))])

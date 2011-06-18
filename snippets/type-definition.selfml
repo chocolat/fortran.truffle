@@ -1,0 +1,10 @@
+(name [Type Definition])
+
+(trigger
+    (tab type))
+
+(only-in source.fortran)
+
+(snippet [type %{1="type name"}
+	%{0}
+end type %{1}])

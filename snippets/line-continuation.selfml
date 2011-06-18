@@ -1,0 +1,9 @@
+(name [Line Continuation])
+
+(trigger
+    (key [[ctrl][enter]]))
+
+(only-in source.fortran)
+
+(snippet [ &
+])

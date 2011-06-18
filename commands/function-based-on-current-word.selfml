@@ -1,0 +1,18 @@
+(trigger
+    (key [[shift][enter]]))
+
+(name [Function based on current word])
+
+(only-in source.fortran)
+
+(input selection word)
+
+(output snippet)
+
+(save nothing)
+
+(script [echo "function $TM_CURRENT_WORD(\$1)"
+echo "	\$2, intent(\${3:inout}) :: \$1"
+echo "	\$4 :: $TM_CURRENT_WORD"
+echo "	\$0"
+echo "end function $TM_CURRENT_WORD"])

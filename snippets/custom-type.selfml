@@ -1,0 +1,8 @@
+(name [Custom Type])
+
+(trigger
+    (tab typ))
+
+(only-in source.fortran)
+
+(snippet [type(%{1="type name"})%{2=", %{3=\"attributes\"}"} :: %{4="name"}])

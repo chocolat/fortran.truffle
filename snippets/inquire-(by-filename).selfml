@@ -1,0 +1,8 @@
+(name [Inquire (by Filename)])
+
+(trigger
+    (tab inq))
+
+(only-in source.fortran)
+
+(snippet [inquire(file=%{1="filename"}, opened=%{2="ioopen"}, exists=%{3="ioexist"}, number=%{4="iounit"})])

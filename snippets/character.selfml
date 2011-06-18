@@ -1,0 +1,8 @@
+(name Character)
+
+(trigger
+    (tab char))
+
+(only-in source.fortran)
+
+(snippet [character(len=%{1}%{2=", kind=%{3}"})%{4=", %{5=\"attributes\"}"} :: %{6="name"}])

@@ -1,0 +1,8 @@
+(name [module procedure])
+
+(trigger
+    (tab mp))
+
+(only-in source.fortran)
+
+(snippet [module procedure %{0="name"}])

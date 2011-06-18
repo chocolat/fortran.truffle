@@ -1,0 +1,8 @@
+(name Not)
+
+(trigger
+    (tab not))
+
+(only-in source.fortran)
+
+(snippet .not.)

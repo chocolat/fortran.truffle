@@ -1,0 +1,8 @@
+(name Real)
+
+(trigger
+    (tab rea))
+
+(only-in source.fortran)
+
+(snippet [real%{1="(%{2=\"kind\"})"}%{3=", %{4=\"attributes\"}"} :: %{5="name"}])

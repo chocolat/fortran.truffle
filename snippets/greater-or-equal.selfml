@@ -1,0 +1,8 @@
+(name [Greater or Equal])
+
+(trigger
+    (tab ge))
+
+(only-in source.fortran)
+
+(snippet .ge.)

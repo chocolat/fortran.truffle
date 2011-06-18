@@ -1,0 +1,139 @@
+(root source.fortran.modern
+    (zone invalid.deprecated.comment.line.fortran
+        (start
+            (regex [^[Cc]\s+]
+                (0 punctuation.definition.comment.fortran)))
+        (end
+            (regex $\n?))
+        (subzones
+            (zone
+                (match
+                    (regex \\\s*\n)))))
+    (include source.fortran)
+    (zone meta.function.interface.operator.fortran.modern
+        (start
+            (regex [(?x:					# extended mode
+					^
+					\s*					# start of line and possibly some space
+					(?i:(interface))		# 1: word interface
+					\s+					# some space
+					(?i:(operator|assignment))		# 2: the words operator or assignment
+					\(					# opening parenthesis
+					((\.[a-zA-Z0-9_]+\.)|[\+\-\=\/\*]+)	# 3: an operator
+					
+					\)					# closing parenthesis
+					)]
+                (3 keyword.operator.fortran)
+                (1 storage.type.function.fortran)
+                (2 storage.type.fortran)))
+        (end
+            (regex [(?x:
+					((?i:end))			# 1: the word end
+					\s*					# possibly some space
+					((?i:interface)?) 		# 2: possibly interface
+					)]
+                (1 keyword.other.fortran)
+                (2 storage.type.function.fortran)))
+        (subzones
+            (include $self)))
+    (zone meta.function.interface.fortran.modern
+        (start
+            (regex [(?x:					# extended mode
+					^
+					\s*					# start of line and possibly some space
+					(?i:(interface))		# 1: word interface
+					\s+					# some space
+					([A-Za-z_][A-Za-z0-9_]*)	# 1: name
+					)]
+                (1 storage.type.function.fortran)
+                (2 entity.name.function.fortran)))
+        (end
+            (regex [(?x:				# extended mode
+					((?i:end))		# 1: the word end
+					\s*				# possibly some space
+					((?i:interface)?) 	# 2: possibly interface
+					)]
+                (1 keyword.other.fortran)
+                (2 storage.type.function.fortran)))
+        (subzones
+            (include $self)))
+    (zone meta.type-definition.fortran.modern
+        (start
+            (regex [(?x:			# extended mode
+					^\s*			# begining of line and some space
+					(?i:(type))	# 1: word type
+					\s+			# some space
+					([a-zA-Z_][a-zA-Z0-9_]*)	# 2: type name
+					)]
+                (1 storage.type.fortran.modern)
+                (2 entity.name.type.fortran.modern)))
+        (end
+            (regex [(?x:
+					((?i:end))			# 1: the word end
+					\s*					# possibly some space
+					(?i:(type))? 			# 2: possibly the word type
+					(\s+[A-Za-z_][A-Za-z0-9_]*)?	# 3: possibly the name
+					)]
+                (3 entity.name.type.end.fortran.modern)
+                (1 keyword.other.fortran)
+                (2 storage.type.fortran.modern)))
+        (subzones
+            (include $self)))
+    (zone comment.line.exclamation.mark.fortran.modern
+        (start
+            (regex [(!-)]
+                (0 punctuation.definition.comment.fortran)))
+        (end
+            (regex $\n?))
+        (subzones
+            (zone
+                (match
+                    (regex \\\s*\n)))))
+    (zone comment.line.exclamation.fortran.modern
+        (start
+            (regex [[!]]
+                (0 punctuation.definition.comment.fortran)))
+        (end
+            (regex $\n?))
+        (subzones
+            (zone
+                (match
+                    (regex \\\s*\n)))))
+    (zone keyword.control.fortran.modern
+        (match
+            (regex [\b(?i:(select\s+case|case(\s+default)?|end\s+select|use|(end\s+)?forall))\b])))
+    (zone keyword.control.io.fortran.modern
+        (match
+            (regex [\b(?i:(access|action|advance|append|apostrophe|asis|blank|delete|delim|direct|end|eor|err|exist|file|fmt|form|formatted|iolength|iostat|keep|name|named|nextrec|new|nml|no|null|number|old|opened|pad|position|quote|read|readwrite|rec|recl|replace|scratch|sequential|size|status|undefined|unformatted|unit|unknown|write|yes|zero|namelist)(?=\())])))
+    (zone keyword.operator.logical.fortran.modern
+        (match
+            (regex [\b(\=\=|\/\=|\>\=|\>|\<|\<\=)\b])))
+    (zone keyword.operator.fortran.modern
+        (match
+            (regex [(\%|\=\>)])))
+    (zone keyword.other.instrinsic.numeric.fortran.modern
+        (match
+            (regex [\b(?i:(ceiling|floor|modulo)(?=\())])))
+    (zone keyword.other.instrinsic.array.fortran.modern
+        (match
+            (regex [\b(?i:(allocate|allocated|deallocate)(?=\())])))
+    (zone keyword.other.instrinsic.pointer.fortran.modern
+        (match
+            (regex [\b(?i:(associated)(?=\())])))
+    (zone keyword.other.programming-units.fortran.modern
+        (match
+            (regex [\b(?i:((end\s*)?(interface|procedure|module)))\b])))
+    (zone meta.specification.fortran.modern
+        (start
+            (regex [\b(?i:(type(?=\s*\()))\b(?=.*::)]
+                (1 storage.type.fortran.modern)))
+        (end
+            (regex [(?=!)|$]))
+        (subzones
+            (include $base)))
+    (zone storage.type.fortran.modern
+        (match
+            (regex [\b(?i:(type(?=\s*\()))\b])))
+    (zone storage.modifier.fortran.modern
+        (match
+            (regex [\b(?i:(optional|recursive|pointer|allocatable|target|private|public))\b]))))

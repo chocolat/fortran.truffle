@@ -1,0 +1,8 @@
+(name [Quick Character])
+
+(trigger
+    (tab c))
+
+(only-in source.fortran)
+
+(snippet [character(len=*) :: ])

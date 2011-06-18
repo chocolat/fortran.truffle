@@ -1,0 +1,9 @@
+(name case)
+
+(trigger
+    (tab case))
+
+(only-in source.fortran)
+
+(snippet [case %{1="default"}
+	%{0}])

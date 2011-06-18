@@ -1,0 +1,11 @@
+(name subroutine)
+
+(trigger
+    (tab sub))
+
+(only-in source.fortran)
+
+(snippet [subroutine %{1="name"}
+	%{2="argument type"}, intent(%{3="inout"}) :: %{1/\w+\((.*)\)|.*/$1/}
+	%{0}
+end subroutine %{1/(\w+).*/$1/}])

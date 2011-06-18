@@ -1,0 +1,88 @@
+(detector
+    (extension f)
+    (extension F)
+    (extension f77)
+    (extension F77)
+    (extension for)
+    (extension FOR)
+    (extension fpp)
+    (extension FPP))
+
+(folding
+    (start [(?x:		# extended mode
+		^\s*						# start of line and some space
+		(?i:						# case insensitive match
+			(
+				if.*then			# if ... then
+				|for|do|select\s+case|where|interface	# some easy keywords
+				|module(?!\s*procedure)				# module not followed by procedure
+				|type(?!\s*\()	# type but not type(
+			)
+			|					# ...or...
+			(
+				[a-z]*(?<!end)\s*(function|subroutine)	# possibly some letters, but not the word end, and a space, then function
+			)
+		)
+		.*$						# anything until the end of the line
+		)])
+    (stop [(?x:		# extended mode
+		^\s*				# start of line and some space
+		(?i:(end))		# the word end, case insensitive
+		.*$				# anything until the end of the line
+		)]))
+
+(shell-variables
+    (TM_COMMENT_START [C ])
+    (TM_COMMENT_END [])
+    (TM_COMMENT_MODE line)
+    (TM_COMMENT_DISABLE_INDENT yes)
+    (TM_COMMENT_START_2 [c ]))
+
+(comment.block [C ] [])
+
+(comment.line [c ])
+
+(in source.fortran.modern
+    (shell-variables
+        (TM_COMMENT_MODE line)
+        (TM_COMMENT_START [! ])
+        (TM_COMMENT_END [])
+        (TM_COMMENT_START_2 [* ])
+        (TM_COMMENT_DISABLE_INDENT yes))
+    (comment.block [! ] [])
+    (comment.line [* ]))
+
+(in [source.fortran meta.function.interface])
+
+(in [source.fortran meta.specification])
+
+(in [source.fortran meta.preprocessor.include string])
+
+(indentation.decrease [^\s*(?i:end)\b])
+
+(indentation.increase [^\s*((if.*then)|for|do|else|elseif|program|where)\b.*])
+
+(indentation.ignore-line [^\s*[cC]\s*.*$])
+
+(in [source.fortran meta.preprocessor.include string]
+    (no-spellchecking))
+
+(in comment.line.exclamation.mark.fortran.modern
+    (symbol-list
+        (transformation [
+		s/\!-//; 
+		s/\-/   /g;
+	])))
+
+(in [source.fortran entity.name.function.end, source.fortran entity.name.type.end]
+    (symbol-list))
+
+(in [source.fortran meta.preprocessor.include]
+    (pair "
+        "
+        (smart-typing)
+        (highlight))
+    (pair '
+        '
+        (smart-typing)
+        (highlight)))

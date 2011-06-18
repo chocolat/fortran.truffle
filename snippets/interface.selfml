@@ -1,0 +1,10 @@
+(name interface)
+
+(trigger
+    (tab interf))
+
+(only-in source.fortran)
+
+(snippet [interface %{1="name"}
+	%{0}
+end interface ! %{1}])

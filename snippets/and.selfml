@@ -1,0 +1,8 @@
+(name And)
+
+(trigger
+    (tab and))
+
+(only-in source.fortran)
+
+(snippet .and.)

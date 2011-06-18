@@ -1,0 +1,8 @@
+(name min)
+
+(trigger
+    (tab min))
+
+(only-in source.fortran)
+
+(snippet [min(%{1}, %{2}${, %{3}:...})%{0}])

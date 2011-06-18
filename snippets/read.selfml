@@ -1,0 +1,10 @@
+(name Read)
+
+(trigger
+    (tab read))
+
+(only-in source.fortran)
+
+(snippet [read(unit=%{1="iounit"}, fmt="(%{2="format string"})", iostat=%{3="istat"}) %{4="variables"}
+if ( %{3} /= 0 ) stop "Read error in file unit %{1}"
+])

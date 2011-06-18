@@ -1,0 +1,8 @@
+(name [Less or Equal])
+
+(trigger
+    (tab le))
+
+(only-in source.fortran)
+
+(snippet .le.)
