@@ -5,4 +5,4 @@
 
 (only-in source.fortran)
 
-(snippet [pack(%{1="array"}, mask=(%{2="%{1}>0"})%{3=", vector=%{4=\"destination vector\"}"})])
+(snippet [pack(%{1="array"}, mask=(%{2="%{1}>0"})%{3=", vector=%{4="destination vector"}"})])

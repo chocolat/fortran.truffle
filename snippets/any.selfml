@@ -5,4 +5,4 @@
 
 (only-in source.fortran)
 
-(snippet [any(%{1="mask"}%{2=", dim=%{3=\"1\"}"})])
+(snippet [any(%{1="mask"}%{2=", dim=%{3="1"}"})])

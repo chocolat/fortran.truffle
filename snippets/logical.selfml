@@ -5,4 +5,4 @@
 
 (only-in source.fortran)
 
-(snippet [logical%{1="(%{2=\"kind\"})"}%{3=", %{4=\"attributes\"}"} :: %{5="name"}])
+(snippet [logical%{1="(%{2="kind"})"}%{3=", %{4="attributes"}"} :: %{5="name"}])

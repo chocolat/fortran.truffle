@@ -5,4 +5,4 @@
 
 (only-in source.fortran)
 
-(snippet [sum(%{1="source"}%{2=", dim=%{3=\"1\"}"}%{4=", mask=%{5=\"(%{1}>0)\"}"})])
+(snippet [sum(%{1="source"}%{2=", dim=%{3="1"}"}%{4=", mask=%{5="(%{1}>0)"}"})])

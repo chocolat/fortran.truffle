@@ -5,4 +5,4 @@
 
 (only-in source.fortran)
 
-(snippet [maxloc(%{1="source"}%{2=", mask=%{3=\"(%{1}>0)\"}"})])
+(snippet [maxloc(%{1="source"}%{2=", mask=%{3="(%{1}>0)"}"})])

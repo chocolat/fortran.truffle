@@ -5,4 +5,4 @@
 
 (only-in source.fortran)
 
-(snippet [lbound(%{1="source"}%{2=", dim=%{3=\"1\"}"})])
+(snippet [lbound(%{1="source"}%{2=", dim=%{3="1"}"})])

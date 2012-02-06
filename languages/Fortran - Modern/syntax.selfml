@@ -1,14 +1,4 @@
 (root source.fortran.modern
-    (zone invalid.deprecated.comment.line.fortran
-        (start
-            (regex [^[Cc]\s+]
-                (0 punctuation.definition.comment.fortran)))
-        (end
-            (regex $\n?))
-        (subzones
-            (zone
-                (match
-                    (regex \\\s*\n)))))
     (include source.fortran)
     (zone meta.function.interface.operator.fortran.modern
         (start

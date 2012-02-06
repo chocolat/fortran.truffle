@@ -65,7 +65,7 @@
             (regex [\b(?i:(open|close|read|write|print|inquire|backspace|endfile|format))\b])))
     (zone keyword.operator.fortran
         (match
-            (regex [((?<!\=)\=(?!\=)|\-|\+|\/\/|\/|\*|::)])))
+            (regex [((?<!\=)\=(?!\=)|\-|\+|\/\/|\/|(?!^)\*|::)])))
     (zone keyword.operator.logical.fortran
         (match
             (regex [(?i:(\.and\.|\.or\.|\.eq\.|\.lt\.|\.le\.|\.gt\.|\.ge\.|\.ne\.|\.not\.|\.eqv\.|\.neqv\.))])))
@@ -127,7 +127,17 @@
                 (match ""))))
     (zone comment.line.c.fortran
         (start
-            (regex [^[Cc]]
+            (regex [^[Cc](?=\b|[Cc])]
+                (0 punctuation.definition.comment.fortran)))
+        (end
+            (regex $\n?))
+        (subzones
+            (zone
+                (match
+                    (regex \\\s*\n)))))
+    (zone comment.line.asterisk.fortran
+        (start
+            (regex ^\*
                 (0 punctuation.definition.comment.fortran)))
         (end
             (regex $\n?))
