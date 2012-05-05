@@ -1,5 +1,4 @@
-(menu command.quick-open
-    ---
+(menu
     (submenu [Programming Units] snippet.program snippet.module snippet.interface snippet.module-procedure snippet.subroutine snippet.function --- command.subroutine-based-on-current-word command.function-based-on-current-word)
     (submenu [Variable Specification] snippet.quick-integer snippet.quick-real snippet.quick-logical snippet.quick-character snippet.quick-custom-type --- snippet.integer snippet.real snippet.logical snippet.character snippet.custom-type --- snippet.implicit-none snippet.data snippet.type-definition)
     (submenu [Control Constructs] snippet.if [snippet.if-(single-line)] snippet.elseif --- snippet.do snippet.do-while snippet.named-do snippet.cycle snippet.stop snippet.implied-do --- snippet.select-case snippet.named-select-case snippet.case --- snippet.forall)
